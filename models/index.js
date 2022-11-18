@@ -44,7 +44,17 @@ db.sensors.hasMany(db.datastreams, {
   foreignKey: 'SENSOR_ID' 
 });
 
+db.sensors.hasMany(db.multidatastreams, {
+  as: "MultiDatastreams",
+  foreignKey: 'SENSOR_ID' 
+});
+
 db.datastreams.belongsTo(db.sensors, { 
+  as: "Sensor",
+  foreignKey: 'SENSOR_ID' 
+});
+
+db.multidatastreams.belongsTo(db.sensors, { 
   as: "Sensor",
   foreignKey: 'SENSOR_ID' 
 });
@@ -64,9 +74,19 @@ db.datastreams.hasMany(db.observations, {
   foreignKey: 'DATASTREAM_ID' 
 });
 
+db.multidatastreams.hasMany(db.observations, {
+  as: "Observations",
+  foreignKey: 'MULTI_DATASTREAM_ID' 
+});
+
 db.observations.belongsTo(db.datastreams, { 
   as: "Datastream",
   foreignKey: 'DATASTREAM_ID' 
+});
+
+db.observations.belongsTo(db.multidatastreams, { 
+  as: "MultiDatastream",
+  foreignKey: 'MULTI_DATASTREAM_ID' 
 });
 
 db.featuresOfInterest.hasMany(db.observations, {
@@ -90,7 +110,7 @@ db.historicalLocations.belongsTo(db.things, {
 });
 
 const locationsHistLocations = sequelize.define("locationsHistLocations", { 
-  locationId: {
+    locationID: {
       type: Sequelize.INTEGER,
       references: {
         model: db.locations,
@@ -98,7 +118,7 @@ const locationsHistLocations = sequelize.define("locationsHistLocations", {
       },
       field: "LOCATION_ID"
     },
-    HistoricalLocationId: {
+    historicallocationID: {
       type: Sequelize.INTEGER,
       references: {
         model: db.historicalLocations,
@@ -116,7 +136,7 @@ db.historicalLocations.belongsToMany(db.locations, {through: locationsHistLocati
 db.locations.belongsToMany(db.historicalLocations, {through: locationsHistLocations});
 
 const thingsLocations = sequelize.define("thingsLocations", { 
-  locationId: {
+  locationID: {
       type: Sequelize.INTEGER,
       references: {
         model: db.locations,
@@ -124,7 +144,7 @@ const thingsLocations = sequelize.define("thingsLocations", {
       },
       field: "LOCATION_ID"
     },
-    thingId: {
+    thingID: {
       type: Sequelize.INTEGER,
       references: {
         model: db.things,

@@ -13,9 +13,12 @@ module.exports = (sequelize, Sequelize) => {
         phenomenonTime : {
             type: Sequelize.DataTypes.VIRTUAL,
             get() {
-              var val = this['phenomenonTimeStart'].toISOString();
-              if(!!this['phenomenonTimeEnd']){
-                val += '/'+this['phenomenonTimeEnd'].toISOString();
+                var val = "";
+              if(!!this['phenomenonTimeStart']){
+                val = this['phenomenonTimeStart'].toISOString();
+                if(!!this['phenomenonTimeEnd']){
+                    val += '/'+this['phenomenonTimeEnd'].toISOString();
+                }
               }
               delete this.dataValues.phenomenonTimeStart;
               delete this.dataValues.phenomenonTimeEnd;
@@ -50,9 +53,12 @@ module.exports = (sequelize, Sequelize) => {
         validTime : {
             type: Sequelize.DataTypes.VIRTUAL,
             get() {
-              var val = this['validTimeStart'].toISOString();
-              if(!!this['validTimeEnd']){
-                val += '/'+this['validTimeEnd'].toISOString();
+              var val = "";
+              if(!!this['validTimeStart']){
+                val = this['validTimeStart'].toISOString();
+                if(!!this['validTimeEnd']){
+                    val += '/'+this['validTimeEnd'].toISOString();
+                }
               }
               delete this.dataValues.validTimeStart;
               delete this.dataValues.validTimeEnd;
@@ -89,7 +95,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.VIRTUAL,
             get() {
                 var hostname = config.URL_PATH+':'+config.URL_PORT;
-              return hostname+'/Observations/'+this['ID']+'/Datastreams';
+              return hostname+'/Observations/'+this['ID']+'/Datastream';
             },
             allowNull: false
         },        

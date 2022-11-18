@@ -29,9 +29,9 @@ const multiDatastreamsEntityIdGET = ({ entityId, select, expand }) => new Promis
 * */
 const multiDatastreamsEntityIdObservationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, MultiDatastreams, "MultiDatastreams", Op, "Observations")
+    Service.findById(entityId, MultiDatastreams, "MultiDatastreams", "", Op, "Observations")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Observations)
     }).catch(err => {
       reject(err);
     });
@@ -47,9 +47,9 @@ const multiDatastreamsEntityIdObservationsGET = ({ entityId }) => new Promise(
 * */
 const multiDatastreamsEntityIdObservedPropertiesGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, MultiDatastreams, "MultiDatastreams", Op, "ObservedProperty")
+    Service.findById(entityId, MultiDatastreams, "MultiDatastreams", "", Op, "ObservedProperty")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.ObservedProperty)
     }).catch(err => {
       reject(err);
     });
@@ -65,9 +65,9 @@ const multiDatastreamsEntityIdObservedPropertiesGET = ({ entityId }) => new Prom
 * */
 const multiDatastreamsEntityIdSensorGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, MultiDatastreams, "MultiDatastreams", Op, "Sensor")
+    Service.findById(entityId, MultiDatastreams, "MultiDatastreams", "", Op, "Sensor")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Sensor)
     }).catch(err => {
       reject(err);
     });
@@ -83,9 +83,9 @@ const multiDatastreamsEntityIdSensorGET = ({ entityId }) => new Promise(
 * */
 const multiDatastreamsEntityIdThingGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, MultiDatastreams, "MultiDatastreams", Op, "Thing")
+    Service.findById(entityId, MultiDatastreams, "MultiDatastreams", "", Op, "Thing")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Thing)
     }).catch(err => {
       reject(err);
     });

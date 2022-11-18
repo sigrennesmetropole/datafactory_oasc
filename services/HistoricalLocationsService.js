@@ -29,9 +29,11 @@ const historicalLocationsEntityIdGET = ({ entityId, select, expand }) => new Pro
 * */
 const historicalLocationsEntityIdLocationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, HistoricalLocation, "HistoricalLocation", Op, "Location")
+    // TODO Corriger
+    Service.findById(entityId, HistoricalLocation, "HistoricalLocation", "", Op, "locations")
     .then(data => {
-      resolve(data)
+      console.log(data.payload);
+      resolve(data.payload.locations)
     }).catch(err => {
       reject(err);
     });
@@ -47,9 +49,9 @@ const historicalLocationsEntityIdLocationsGET = ({ entityId }) => new Promise(
 * */
 const historicalLocationsEntityIdThingGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, HistoricalLocation, "HistoricalLocation", Op, "Thing")
+    Service.findById(entityId, HistoricalLocation, "HistoricalLocation", "", Op, "Thing")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Thing)
     }).catch(err => {
       reject(err);
     });

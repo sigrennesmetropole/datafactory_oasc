@@ -29,9 +29,9 @@ const featuresOfInterestEntityIdGET = ({ entityId, select, expand }) => new Prom
 * */
 const featuresOfInterestEntityIdObservationsGET = ({ entityId}) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, FeatureOfInterest, "FeatureOfInterest", Op, "Observations")
+    Service.findById(entityId, FeatureOfInterest, "FeatureOfInterest", "", Op, "Observations")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Observations)
     }).catch(err => {
       reject(err);
     });

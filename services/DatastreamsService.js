@@ -30,9 +30,9 @@ const datastreamsEntityIdGET = ({ entityId, select, expand }) => new Promise(
 * */
 const datastreamsEntityIdObservationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Datastreams, "Datastreams", Op, "Observations")
+    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "Observations")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Observations)
     }).catch(err => {
       reject(err);
     });
@@ -48,9 +48,9 @@ const datastreamsEntityIdObservationsGET = ({ entityId }) => new Promise(
 * */
 const datastreamsEntityIdObservedPropertyGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Datastreams, "Datastreams", Op, "ObservedProperty")
+    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "ObservedProperty")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.ObservedProperty)
     }).catch(err => {
       reject(err);
     });
@@ -66,9 +66,9 @@ const datastreamsEntityIdObservedPropertyGET = ({ entityId }) => new Promise(
 * */
 const datastreamsEntityIdSensorGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Datastreams, "Datastreams", Op, "Sensor")
+    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "Sensor")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Sensor)
     }).catch(err => {
       reject(err);
     });
@@ -84,9 +84,9 @@ const datastreamsEntityIdSensorGET = ({ entityId }) => new Promise(
 * */
 const datastreamsEntityIdThingGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Datastreams, "Datastreams", Op, "Thing")
+    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "Thing")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Thing)
     }).catch(err => {
       reject(err);
     });

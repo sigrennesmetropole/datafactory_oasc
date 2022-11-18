@@ -12,9 +12,9 @@ const Op = db.Sequelize.Op;
 * */
 const thingsEntityIdDatastreamsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Things, "Things", Op, "Datastreams")
+    Service.findById(entityId, Things, "Things", "", Op, "Datastreams")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Datastreams)
     }).catch(err => {
       reject(err);
     });
@@ -45,9 +45,9 @@ const thingsEntityIdGET = ({ entityId, select, expand }) => new Promise(
 * */
 const thingsEntityIdHistoricalLocationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Things, "Things", Op, "HistoricalLocations")
+    Service.findById(entityId, Things, "Things", "", Op, "HistoricalLocations")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.HistoricalLocations)
     }).catch(err => {
       reject(err);
     });
@@ -61,11 +61,12 @@ const thingsEntityIdHistoricalLocationsGET = ({ entityId }) => new Promise(
 * filter String A filter query. (optional)
 * returns Locations
 * */
+// TODO CORRIGER
 const thingsEntityIdLocationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Things, "Things", Op, "Locations")
+    Service.findById(entityId, Things, "Things", "", Op, "locations")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.locations)
     }).catch(err => {
       reject(err);
     });
@@ -79,11 +80,12 @@ const thingsEntityIdLocationsGET = ({ entityId }) => new Promise(
 * filter String A filter query. (optional)
 * returns MultiDatastreams
 * */
+// TODO CORRIGER
 const thingsEntityIdMultiDatastreamsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Things, "Things", Op, "MultiDatastreams")
+    Service.findById(entityId, Things, "Things", "", Op, "MultiDatastreams")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.MultiDatastreams)
     }).catch(err => {
       reject(err);
     });

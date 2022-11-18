@@ -14,9 +14,9 @@ const Op = db.Sequelize.Op;
 * */
 const sensorsEntityIdDatastreamsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Sensors, "Sensors", Op, "Datastreams")
+    Service.findById(entityId, Sensors, "Sensors", "", Op, "Datastreams")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.Datastreams)
     }).catch(err => {
       reject(err);
     });
@@ -47,9 +47,9 @@ const sensorsEntityIdGET = ({ entityId, select, expand }) => new Promise(
 * */
 const sensorsEntityIdMultiDatastreamsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findSubById(entityId, Sensors, "Sensors", Op, "MultiDatastreams")
+    Service.findById(entityId, Sensors, "Sensors", "", Op, "MultiDatastreams")
     .then(data => {
-      resolve(data)
+      resolve(data.payload.MultiDatastreams)
     }).catch(err => {
       reject(err);
     });

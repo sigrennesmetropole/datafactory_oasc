@@ -1,5 +1,5 @@
 {
-  "name":  "sensorthings-v1-1",
+  "name": "sensorthings-v1-1",
   "version": "1.0.0",
   "description": "Version v1.1 of the OGC SensorThings API, including Part 2 - Tasking.",
   "main": "index.js",
@@ -23,6 +23,8 @@
     "js-yaml": "^3.3.0",
     "ono": "^5.0.1",
     "openapi-sampler": "^1.0.0-beta.15",
+    "pg": "^8.8.0",
+    "sequelize": "^6.25.6",
     "swagger-ui-express": "^4.0.2",
     "winston": "^3.2.1"
   },

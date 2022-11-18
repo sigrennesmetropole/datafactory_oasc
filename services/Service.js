@@ -39,23 +39,7 @@ class Service {
     }
     if(!!expand){
       var expandFields = expand.split(",");
-      var array = [];
-      expandFields.forEach(function(item) {
-        var tab = item.split('.');
-        var len = tab.length;
-        var str = [];
-        for (const element of tab.reverse()){
-          var val = {"as" : element}
-          if(str.length == 1) {
-            var pop = str.pop()
-            val.include =  pop
-          }
-          str.push(val);
-        }
-        array.push(val);
-      });
-      findJson.include = array;
-      console.log(array)
+      findJson.include = expandFields;
     }
     return {findJson, limit}
   }
@@ -78,36 +62,6 @@ class Service {
           }, 404));
         }else{
           const resultat = data[0];
-          resolve(Service.successResponse(resultat));
-        }
-      })
-      .catch(err => {
-        reject(Service.rejectResponse({
-          message:
-            err.message || `Some error occurred while retrieving ${name}.`
-        }));
-      });
-    })
-  }
-
-  static findSubById(entityId, service, name, op, sub){
-    return new Promise((resolve,reject) => { 
-      if(entityId == undefined){
-        reject(Service.rejectResponse({
-          message: "id is mandatory"
-        }), 400);
-      }
-      const {findJson , limit} = Service.getParameterGet( 0, 1, "", "", sub)
-      findJson.where = { "ID": { [op.eq]: entityId } };
-      service.findAll(findJson)
-      .then(data => {
-        if(data.length === 0){
-          reject(Service.rejectResponse({
-            message:
-            `${name} with id ${entityId} not found`
-          }, 404));
-        }else{
-          const resultat = data[0].dataValues[sub];
           resolve(Service.successResponse(resultat));
         }
       })

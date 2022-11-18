@@ -33,7 +33,13 @@ module.exports = (sequelize, Sequelize) => {
         phenomenonTime : {
             type: Sequelize.DataTypes.VIRTUAL,
             get() {
-              const val = this['phenomenonTimeStart'].toISOString()+'/'+this['phenomenonTimeEnd'].toISOString();
+                var val = "";
+                if(!!this['phenomenonTimeStart']){
+                    val = this['phenomenonTimeStart'].toISOString();
+                    if(!!this['phenomenonTimeEnd']){
+                        val += '/'+this['phenomenonTimeEnd'].toISOString();
+                    }
+                  }
               delete this.dataValues.phenomenonTimeStart;
               delete this.dataValues.phenomenonTimeEnd;
               return val;
@@ -50,7 +56,13 @@ module.exports = (sequelize, Sequelize) => {
         resultTime : {
             type: Sequelize.DataTypes.VIRTUAL,
             get() {
-              const val = this['resultTimeStart'].toISOString()+'/'+this['resultTimeEnd'].toISOString();
+                var val = "";
+                if(!!this['resultTimeStart']){
+                    val = this['resultTimeStart'].toISOString();
+                    if(!!this['resultTimeEnd']){
+                        val += '/'+this['resultTimeEnd'].toISOString();
+                    }
+                  }
               delete this.dataValues.resultTimeStart;
               delete this.dataValues.resultTimeEnd;
               return val;
