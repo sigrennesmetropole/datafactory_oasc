@@ -3,7 +3,7 @@ class Hooks{
         if(!!observations){
             if (!Array.isArray(observations)) observations = [observations];
             for (const instance of observations) {
-                var hostname = config.URL_PATH+':'+config.URL_PORT;
+                var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1";
                 var id = instance.dataValues.id;
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/Observations/'+id;
@@ -25,7 +25,7 @@ class Hooks{
         if(!!thing){
             if (!Array.isArray(thing)) thing = [thing];
             for (const instance of thing) {
-                var hostname = config.URL_PATH+':'+config.URL_PORT;
+                var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1";
                 var id = instance.dataValues.id;
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/Things/'+id;
@@ -47,7 +47,7 @@ class Hooks{
         if(!!sensor){
             if (!Array.isArray(sensor)) sensor = [sensor];
             for (const instance of sensor) {
-                var hostname = config.URL_PATH+':'+config.URL_PORT;
+                var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1";
                 var id = instance.dataValues.id;
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/Sensors/'+id;
@@ -65,7 +65,7 @@ class Hooks{
         if(!!obsProperties){
             if (!Array.isArray(obsProperties)) obsProperties = [obsProperties];
             for (const instance of obsProperties) {
-                var hostname = config.URL_PATH+':'+config.URL_PORT;
+                var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1";
                 var id = instance.dataValues.id;
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/ObservedProperties/'+id;
@@ -83,7 +83,7 @@ class Hooks{
         if(!!feature){
             if (!Array.isArray(feature)) feature = [feature];
             for (const instance of feature) {
-                var hostname = config.URL_PATH+':'+config.URL_PORT;
+                var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1";
                 var id = instance.dataValues.id;
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/FeatureOfInterest/'+id;
@@ -101,7 +101,7 @@ class Hooks{
         if(!!histLocations){
             if (!Array.isArray(histLocations)) histLocations = [histLocations];
             for (const instance of histLocations) {
-                var hostname = config.URL_PATH+':'+config.URL_PORT;
+                var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1";
                 var id = instance.dataValues.id;
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/HistoricalLocations/'+id;
@@ -123,7 +123,7 @@ class Hooks{
         if(!!locations){
             if (!Array.isArray(locations)) locations = [locations];
             for (const instance of locations) {
-                var hostname = config.URL_PATH+':'+config.URL_PORT;
+                var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1";
                 var id = instance.dataValues.id;
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/Locations/'+id;
@@ -147,7 +147,7 @@ class Hooks{
             if (!Array.isArray(datastream)) datastream = [datastream];
             for (const instance of datastream) {
                 // To prevent mistakes:
-                var hostname = config.URL_PATH+':'+config.URL_PORT;
+                var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1";
                 var id = instance.dataValues.id;
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/Datastreams/'+id;
