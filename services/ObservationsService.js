@@ -14,9 +14,9 @@ const Op = db.Sequelize.Op;
 * */
 const observationsEntityIdDatastreamGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Observations, "Observations", "", Op, "Datastream")
+    Service.findById(entityId, Observations, "Observations", "", Op, "datastream")
     .then(data => {
-      resolve(data.payload.Datastream)
+      resolve(data.payload.datastream)
     }).catch(err => {
       reject(err);
     });
@@ -32,9 +32,9 @@ const observationsEntityIdDatastreamGET = ({ entityId }) => new Promise(
 * */
 const observationsEntityIdFeatureOfInterestGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Observations, "Observations", "", Op, "FeatureOfInterest")
+    Service.findById(entityId, Observations, "Observations", "", Op, "feature")
     .then(data => {
-      resolve(data.payload.FeatureOfInterest)
+      resolve(data.payload.feature)
     }).catch(err => {
       reject(err);
     });
@@ -64,17 +64,17 @@ const observationsEntityIdGET = ({ entityId, select, expand }) => new Promise(
 * returns MultiDatastream
 * */
 // TODO CORRIGER
-const observationsEntityIdMultiDatastreamGET = ({ entityId }) => new Promise(
-  async (resolve, reject) => {
-    Service.findById(entityId, Observations, "Observations", "", Op, "MultiDatastream")
-    .then(data => {
-      console.log(data.payload)
-      resolve(data.payload.MultiDatastream)
-    }).catch(err => {
-      reject(err);
-    });
-  },
-);
+// const observationsEntityIdMultiDatastreamGET = ({ entityId }) => new Promise(
+//   async (resolve, reject) => {
+//     Service.findById(entityId, Observations, "Observations", "", Op, "MultiDatastream")
+//     .then(data => {
+//       console.log(data.payload)
+//       resolve(data.payload.MultiDatastream)
+//     }).catch(err => {
+//       reject(err);
+//     });
+//   },
+// );
 /**
 *
 * page Long The number of the page to return (optional)
@@ -97,6 +97,6 @@ module.exports = {
   observationsEntityIdDatastreamGET,
   observationsEntityIdFeatureOfInterestGET,
   observationsEntityIdGET,
-  observationsEntityIdMultiDatastreamGET,
+  //observationsEntityIdMultiDatastreamGET,
   observationsGET,
 };

@@ -3,7 +3,7 @@ const DatastreamsService = require('./DatastreamsService');
 const FeaturesOfInterestService = require('./FeaturesOfInterestService');
 const HistoricalLocationsService = require('./HistoricalLocationsService');
 const LocationsService = require('./LocationsService');
-const MultiDatastreamsService = require('./MultiDatastreamsService');
+//const MultiDatastreamsService = require('./MultiDatastreamsService');
 const ObservationsService = require('./ObservationsService');
 const ObservedPropertiesService = require('./ObservedPropertiesService');
 const SensorsService = require('./SensorsService');
@@ -15,7 +15,7 @@ module.exports = {
   FeaturesOfInterestService,
   HistoricalLocationsService,
   LocationsService,
-  MultiDatastreamsService,
+  //MultiDatastreamsService,
   ObservationsService,
   ObservedPropertiesService,
   SensorsService,

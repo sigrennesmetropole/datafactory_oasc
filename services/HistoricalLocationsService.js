@@ -2,7 +2,8 @@
 const Service = require('./Service');
 const config = require("../config")
 const db = require("../models");
-const HistoricalLocation = db.historicalLocations;
+const HistoricalLocation = db.histLocations;
+const Location = db.locations;
 const Op = db.Sequelize.Op;
 /**
 *
@@ -31,8 +32,8 @@ const historicalLocationsEntityIdLocationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
     // TODO Corriger
     Service.findById(entityId, HistoricalLocation, "HistoricalLocation", "", Op, "locations")
+    //Service.findAllManyToMany(entityId, Location, Op)
     .then(data => {
-      console.log(data.payload);
       resolve(data.payload.locations)
     }).catch(err => {
       reject(err);
@@ -49,9 +50,9 @@ const historicalLocationsEntityIdLocationsGET = ({ entityId }) => new Promise(
 * */
 const historicalLocationsEntityIdThingGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, HistoricalLocation, "HistoricalLocation", "", Op, "Thing")
+    Service.findById(entityId, HistoricalLocation, "HistoricalLocation", "", Op, "thing")
     .then(data => {
-      resolve(data.payload.Thing)
+      resolve(data.payload.thing)
     }).catch(err => {
       reject(err);
     });

@@ -12,9 +12,9 @@ const Op = db.Sequelize.Op;
 * */
 const thingsEntityIdDatastreamsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Things, "Things", "", Op, "Datastreams")
+    Service.findById(entityId, Things, "Things", "", Op, "datastreams")
     .then(data => {
-      resolve(data.payload.Datastreams)
+      resolve(data.payload.datastreams)
     }).catch(err => {
       reject(err);
     });
@@ -45,9 +45,9 @@ const thingsEntityIdGET = ({ entityId, select, expand }) => new Promise(
 * */
 const thingsEntityIdHistoricalLocationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Things, "Things", "", Op, "HistoricalLocations")
+    Service.findById(entityId, Things, "Things", "", Op, "histLocations")
     .then(data => {
-      resolve(data.payload.HistoricalLocations)
+      resolve(data.payload.histLocations)
     }).catch(err => {
       reject(err);
     });
@@ -81,16 +81,16 @@ const thingsEntityIdLocationsGET = ({ entityId }) => new Promise(
 * returns MultiDatastreams
 * */
 // TODO CORRIGER
-const thingsEntityIdMultiDatastreamsGET = ({ entityId }) => new Promise(
-  async (resolve, reject) => {
-    Service.findById(entityId, Things, "Things", "", Op, "MultiDatastreams")
-    .then(data => {
-      resolve(data.payload.MultiDatastreams)
-    }).catch(err => {
-      reject(err);
-    });
-  },
-);
+// const thingsEntityIdMultiDatastreamsGET = ({ entityId }) => new Promise(
+//   async (resolve, reject) => {
+//     Service.findById(entityId, Things, "Things", "", Op, "MultiDatastreams")
+//     .then(data => {
+//       resolve(data.payload.MultiDatastreams)
+//     }).catch(err => {
+//       reject(err);
+//     });
+//   },
+// );
 /**
 *
 * page Long The number of the page to return (optional)
@@ -114,6 +114,6 @@ module.exports = {
   thingsEntityIdGET,
   thingsEntityIdHistoricalLocationsGET,
   thingsEntityIdLocationsGET,
-  thingsEntityIdMultiDatastreamsGET,
+  //thingsEntityIdMultiDatastreamsGET,
   thingsGET,
 };

@@ -14,9 +14,9 @@ const Op = db.Sequelize.Op;
 * */
 const sensorsEntityIdDatastreamsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Sensors, "Sensors", "", Op, "Datastreams")
+    Service.findById(entityId, Sensors, "Sensors", "", Op, "datastreams")
     .then(data => {
-      resolve(data.payload.Datastreams)
+      resolve(data.payload.datastreams)
     }).catch(err => {
       reject(err);
     });
@@ -45,16 +45,16 @@ const sensorsEntityIdGET = ({ entityId, select, expand }) => new Promise(
 * filter String A filter query. (optional)
 * returns MultiDatastreams
 * */
-const sensorsEntityIdMultiDatastreamsGET = ({ entityId }) => new Promise(
-  async (resolve, reject) => {
-    Service.findById(entityId, Sensors, "Sensors", "", Op, "MultiDatastreams")
-    .then(data => {
-      resolve(data.payload.MultiDatastreams)
-    }).catch(err => {
-      reject(err);
-    });
-  },
-);
+// const sensorsEntityIdMultiDatastreamsGET = ({ entityId }) => new Promise(
+//   async (resolve, reject) => {
+//     Service.findById(entityId, Sensors, "Sensors", "", Op, "MultiDatastreams")
+//     .then(data => {
+//       resolve(data.payload.MultiDatastreams)
+//     }).catch(err => {
+//       reject(err);
+//     });
+//   },
+// );
 /**
 *
 * page Long The number of the page to return (optional)
@@ -76,6 +76,6 @@ const sensorsGET = ({ page, size, filter, select, expand }) => new Promise(
 module.exports = {
   sensorsEntityIdDatastreamsGET,
   sensorsEntityIdGET,
-  sensorsEntityIdMultiDatastreamsGET,
+  //sensorsEntityIdMultiDatastreamsGET,
   sensorsGET,
 };

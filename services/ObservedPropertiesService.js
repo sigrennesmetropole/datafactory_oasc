@@ -2,7 +2,7 @@
 const Service = require('./Service');
 const config = require("../config")
 const db = require("../models");
-const ObservedProperty = db.observedProperty;
+const ObservedProperty = db.obsProperties;
 const Op = db.Sequelize.Op;
 /**
 *
@@ -14,9 +14,9 @@ const Op = db.Sequelize.Op;
 * */
 const observedPropertiesEntityIdDatastreamsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, ObservedProperty, "ObservedProperty", "", Op, "Datastreams")
+    Service.findById(entityId, ObservedProperty, "ObservedProperty", "", Op, "datastreams")
     .then(data => {
-      resolve(data.payload.Datastreams)
+      resolve(data.payload.datastreams)
     }).catch(err => {
       reject(err);
     });
@@ -45,16 +45,16 @@ const observedPropertiesEntityIdGET = ({ entityId, select, expand }) => new Prom
 * filter String A filter query. (optional)
 * returns MultiDatastreams
 * */
-const observedPropertiesEntityIdMultiDatastreamsGET = ({ entityId }) => new Promise(
-  async (resolve, reject) => {
-    Service.findById(entityId, ObservedProperty, "ObservedProperty", "", Op, "MultiDatastreams")
-    .then(data => {
-      resolve(data.payload.MultiDatastreams)
-    }).catch(err => {
-      reject(err);
-    });
-  },
-);
+// const observedPropertiesEntityIdMultiDatastreamsGET = ({ entityId }) => new Promise(
+//   async (resolve, reject) => {
+//     Service.findById(entityId, ObservedProperty, "ObservedProperty", "", Op, "MultiDatastreams")
+//     .then(data => {
+//       resolve(data.payload.MultiDatastreams)
+//     }).catch(err => {
+//       reject(err);
+//     });
+//   },
+// );
 /**
 *
 * page Long The number of the page to return (optional)
@@ -76,6 +76,6 @@ const observedPropertiesGET = ({ page, size, filter, select, expand }) => new Pr
 module.exports = {
   observedPropertiesEntityIdDatastreamsGET,
   observedPropertiesEntityIdGET,
-  observedPropertiesEntityIdMultiDatastreamsGET,
+  //observedPropertiesEntityIdMultiDatastreamsGET,
   observedPropertiesGET,
 };

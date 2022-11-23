@@ -30,9 +30,9 @@ const datastreamsEntityIdGET = ({ entityId, select, expand }) => new Promise(
 * */
 const datastreamsEntityIdObservationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "Observations")
+    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "observations")
     .then(data => {
-      resolve(data.payload.Observations)
+      resolve(data.payload.observations)
     }).catch(err => {
       reject(err);
     });
@@ -48,9 +48,9 @@ const datastreamsEntityIdObservationsGET = ({ entityId }) => new Promise(
 * */
 const datastreamsEntityIdObservedPropertyGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "ObservedProperty")
+    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "obsProperty")
     .then(data => {
-      resolve(data.payload.ObservedProperty)
+      resolve(data.payload.obsProperty)
     }).catch(err => {
       reject(err);
     });
@@ -66,9 +66,9 @@ const datastreamsEntityIdObservedPropertyGET = ({ entityId }) => new Promise(
 * */
 const datastreamsEntityIdSensorGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "Sensor")
+    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "sensor")
     .then(data => {
-      resolve(data.payload.Sensor)
+      resolve(data.payload.sensor)
     }).catch(err => {
       reject(err);
     });
@@ -84,9 +84,9 @@ const datastreamsEntityIdSensorGET = ({ entityId }) => new Promise(
 * */
 const datastreamsEntityIdThingGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "Thing")
+    Service.findById(entityId, Datastreams, "Datastreams", "", Op, "thing")
     .then(data => {
-      resolve(data.payload.Thing)
+      resolve(data.payload.thing)
     }).catch(err => {
       reject(err);
     });

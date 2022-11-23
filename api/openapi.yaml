@@ -60,7 +60,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => observations, thing, sensor, obsProperty)
         explode: true
         in: query
         name: expand
@@ -99,7 +99,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => observations, thing, sensor, obsProperty)
         explode: true
         in: query
         name: expand
@@ -247,7 +247,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => observations)
         explode: true
         in: query
         name: expand
@@ -286,7 +286,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => observations)
         explode: true
         in: query
         name: expand
@@ -365,7 +365,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => locations, thing)
         explode: true
         in: query
         name: expand
@@ -396,6 +396,22 @@ paths:
           format: int64
           type: integer
         style: simple
+      - description: The list of properties that need to be returned.
+        explode: true
+        in: query
+        name: select
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The list of related queries that need to be included in the result. ( Available => locations, thing)
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -490,7 +506,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => histLocation, thing)
         explode: true
         in: query
         name: expand
@@ -521,6 +537,22 @@ paths:
           format: int64
           type: integer
         style: simple
+      - description: The list of properties that need to be returned.
+        explode: true
+        in: query
+        name: select
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The list of related queries that need to be included in the result. ( Available => histLocation, thing)
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -577,345 +609,345 @@ paths:
       tags:
       - Locations
       x-eov-operation-handler: controllers/LocationsController
-  /MultiDatastreams:
-    get:
-      operationId: multiDatastreamsGET
-      parameters:
-      - description: The number of the page to return
-        explode: false
-        in: header
-        name: page
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of elements to return
-        explode: false
-        in: header
-        name: size
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: A filter query.
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of properties that need to be returned.
-        explode: true
-        in: query
-        name: select
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of related queries that need to be included in the result.
-        explode: true
-        in: query
-        name: expand
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MultiDatastreams'
-          description: reponse 200
-      tags:
-      - MultiDatastreams
-      x-eov-operation-handler: controllers/MultiDatastreamsController
-  /MultiDatastreams/{entityId}:
-    get:
-      operationId: multiDatastreamsEntityIdGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MultiDatastream'
-          description: reponse 200
-      tags:
-      - MultiDatastreams
-      x-eov-operation-handler: controllers/MultiDatastreamsController
-  /MultiDatastreams/{entityId}/Observations:
-    get:
-      operationId: multiDatastreamsEntityIdObservationsGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of the page to return
-        explode: false
-        in: header
-        name: page
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of elements to return
-        explode: false
-        in: header
-        name: size
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: A filter query.
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of properties that need to be returned.
-        explode: true
-        in: query
-        name: select
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of related queries that need to be included in the result.
-        explode: true
-        in: query
-        name: expand
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Observations'
-          description: reponse 200
-      tags:
-      - MultiDatastreams
-      x-eov-operation-handler: controllers/MultiDatastreamsController
-  /MultiDatastreams/{entityId}/ObservedProperties:
-    get:
-      operationId: multiDatastreamsEntityIdObservedPropertiesGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of the page to return
-        explode: false
-        in: header
-        name: page
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of elements to return
-        explode: false
-        in: header
-        name: size
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: A filter query.
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of properties that need to be returned.
-        explode: true
-        in: query
-        name: select
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of related queries that need to be included in the result.
-        explode: true
-        in: query
-        name: expand
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ObservedProperties'
-          description: reponse 200
-      tags:
-      - MultiDatastreams
-      x-eov-operation-handler: controllers/MultiDatastreamsController
-  /MultiDatastreams/{entityId}/Sensor:
-    get:
-      operationId: multiDatastreamsEntityIdSensorGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of the page to return
-        explode: false
-        in: header
-        name: page
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of elements to return
-        explode: false
-        in: header
-        name: size
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: A filter query.
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of properties that need to be returned.
-        explode: true
-        in: query
-        name: select
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of related queries that need to be included in the result.
-        explode: true
-        in: query
-        name: expand
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Sensor'
-          description: reponse 200
-      tags:
-      - MultiDatastreams
-      x-eov-operation-handler: controllers/MultiDatastreamsController
-  /MultiDatastreams/{entityId}/Thing:
-    get:
-      operationId: multiDatastreamsEntityIdThingGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of the page to return
-        explode: false
-        in: header
-        name: page
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: The number of elements to return
-        explode: false
-        in: header
-        name: size
-        required: false
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      - description: A filter query.
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of properties that need to be returned.
-        explode: true
-        in: query
-        name: select
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The list of related queries that need to be included in the result.
-        explode: true
-        in: query
-        name: expand
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Thing'
-          description: reponse 200
-      tags:
-      - MultiDatastreams
-      x-eov-operation-handler: controllers/MultiDatastreamsController
+  # /MultiDatastreams:
+  #   get:
+  #     operationId: multiDatastreamsGET
+  #     parameters:
+  #     - description: The number of the page to return
+  #       explode: false
+  #       in: header
+  #       name: page
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of elements to return
+  #       explode: false
+  #       in: header
+  #       name: size
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: A filter query.
+  #       explode: true
+  #       in: query
+  #       name: filter
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of properties that need to be returned.
+  #       explode: true
+  #       in: query
+  #       name: select
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of related queries that need to be included in the result.
+  #       explode: true
+  #       in: query
+  #       name: expand
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/MultiDatastreams'
+  #         description: reponse 200
+  #     tags:
+  #     - MultiDatastreams
+  #     x-eov-operation-handler: controllers/MultiDatastreamsController
+  # /MultiDatastreams/{entityId}:
+  #   get:
+  #     operationId: multiDatastreamsEntityIdGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/MultiDatastream'
+  #         description: reponse 200
+  #     tags:
+  #     - MultiDatastreams
+  #     x-eov-operation-handler: controllers/MultiDatastreamsController
+  # /MultiDatastreams/{entityId}/Observations:
+  #   get:
+  #     operationId: multiDatastreamsEntityIdObservationsGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of the page to return
+  #       explode: false
+  #       in: header
+  #       name: page
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of elements to return
+  #       explode: false
+  #       in: header
+  #       name: size
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: A filter query.
+  #       explode: true
+  #       in: query
+  #       name: filter
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of properties that need to be returned.
+  #       explode: true
+  #       in: query
+  #       name: select
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of related queries that need to be included in the result.
+  #       explode: true
+  #       in: query
+  #       name: expand
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Observations'
+  #         description: reponse 200
+  #     tags:
+  #     - MultiDatastreams
+  #     x-eov-operation-handler: controllers/MultiDatastreamsController
+  # /MultiDatastreams/{entityId}/ObservedProperties:
+  #   get:
+  #     operationId: multiDatastreamsEntityIdObservedPropertiesGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of the page to return
+  #       explode: false
+  #       in: header
+  #       name: page
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of elements to return
+  #       explode: false
+  #       in: header
+  #       name: size
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: A filter query.
+  #       explode: true
+  #       in: query
+  #       name: filter
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of properties that need to be returned.
+  #       explode: true
+  #       in: query
+  #       name: select
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of related queries that need to be included in the result.
+  #       explode: true
+  #       in: query
+  #       name: expand
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ObservedProperties'
+  #         description: reponse 200
+  #     tags:
+  #     - MultiDatastreams
+  #     x-eov-operation-handler: controllers/MultiDatastreamsController
+  # /MultiDatastreams/{entityId}/Sensor:
+  #   get:
+  #     operationId: multiDatastreamsEntityIdSensorGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of the page to return
+  #       explode: false
+  #       in: header
+  #       name: page
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of elements to return
+  #       explode: false
+  #       in: header
+  #       name: size
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: A filter query.
+  #       explode: true
+  #       in: query
+  #       name: filter
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of properties that need to be returned.
+  #       explode: true
+  #       in: query
+  #       name: select
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of related queries that need to be included in the result.
+  #       explode: true
+  #       in: query
+  #       name: expand
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Sensor'
+  #         description: reponse 200
+  #     tags:
+  #     - MultiDatastreams
+  #     x-eov-operation-handler: controllers/MultiDatastreamsController
+  # /MultiDatastreams/{entityId}/Thing:
+  #   get:
+  #     operationId: multiDatastreamsEntityIdThingGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of the page to return
+  #       explode: false
+  #       in: header
+  #       name: page
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: The number of elements to return
+  #       explode: false
+  #       in: header
+  #       name: size
+  #       required: false
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     - description: A filter query.
+  #       explode: true
+  #       in: query
+  #       name: filter
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of properties that need to be returned.
+  #       explode: true
+  #       in: query
+  #       name: select
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     - description: The list of related queries that need to be included in the result.
+  #       explode: true
+  #       in: query
+  #       name: expand
+  #       required: false
+  #       schema:
+  #         type: string
+  #       style: form
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Thing'
+  #         description: reponse 200
+  #     tags:
+  #     - MultiDatastreams
+  #     x-eov-operation-handler: controllers/MultiDatastreamsController
   /Observations:
     get:
       operationId: observationsGET
@@ -954,7 +986,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => datastream, feature)
         explode: true
         in: query
         name: expand
@@ -985,6 +1017,22 @@ paths:
           format: int64
           type: integer
         style: simple
+      - description: The list of properties that need to be returned.
+        explode: true
+        in: query
+        name: select
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The list of related queries that need to be included in the result. ( Available => datastream, feature)
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1041,29 +1089,29 @@ paths:
       tags:
       - Observations
       x-eov-operation-handler: controllers/ObservationsController
-  /Observations/{entityId}/MultiDatastream:
-    get:
-      operationId: observationsEntityIdMultiDatastreamGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MultiDatastream'
-          description: reponse 200
-      tags:
-      - Observations
-      x-eov-operation-handler: controllers/ObservationsController
+  # /Observations/{entityId}/MultiDatastream:
+  #   get:
+  #     operationId: observationsEntityIdMultiDatastreamGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/MultiDatastream'
+  #         description: reponse 200
+  #     tags:
+  #     - Observations
+  #     x-eov-operation-handler: controllers/ObservationsController
   /ObservedProperties:
     get:
       operationId: observedPropertiesGET
@@ -1102,7 +1150,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => datastreams)
         explode: true
         in: query
         name: expand
@@ -1133,6 +1181,22 @@ paths:
           format: int64
           type: integer
         style: simple
+      - description: The list of properties that need to be returned.
+        explode: true
+        in: query
+        name: select
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The list of related queries that need to be included in the result. ( Available => datastreams)
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1166,29 +1230,29 @@ paths:
       tags:
       - ObservedProperties
       x-eov-operation-handler: controllers/ObservedPropertiesController
-  /ObservedProperties/{entityId}/MultiDatastreams:
-    get:
-      operationId: observedPropertiesEntityIdMultiDatastreamsGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MultiDatastreams'
-          description: reponse 200
-      tags:
-      - ObservedProperties
-      x-eov-operation-handler: controllers/ObservedPropertiesController
+  # /ObservedProperties/{entityId}/MultiDatastreams:
+  #   get:
+  #     operationId: observedPropertiesEntityIdMultiDatastreamsGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/MultiDatastreams'
+  #         description: reponse 200
+  #     tags:
+  #     - ObservedProperties
+  #     x-eov-operation-handler: controllers/ObservedPropertiesController
   /Sensors:
     get:
       operationId: sensorsGET
@@ -1227,7 +1291,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => datastreams)
         explode: true
         in: query
         name: expand
@@ -1258,6 +1322,22 @@ paths:
           format: int64
           type: integer
         style: simple
+      - description: The list of properties that need to be returned.
+        explode: true
+        in: query
+        name: select
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The list of related queries that need to be included in the result. ( Available => datastreams)
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1291,29 +1371,29 @@ paths:
       tags:
       - Sensors
       x-eov-operation-handler: controllers/SensorsController
-  /Sensors/{entityId}/MultiDatastreams:
-    get:
-      operationId: sensorsEntityIdMultiDatastreamsGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MultiDatastreams'
-          description: reponse 200
-      tags:
-      - Sensors
-      x-eov-operation-handler: controllers/SensorsController
+  # /Sensors/{entityId}/MultiDatastreams:
+  #   get:
+  #     operationId: sensorsEntityIdMultiDatastreamsGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/MultiDatastreams'
+  #         description: reponse 200
+  #     tags:
+  #     - Sensors
+  #     x-eov-operation-handler: controllers/SensorsController
   /Things:
     get:
       operationId: thingsGET
@@ -1352,7 +1432,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => datastreams, locations, histLocations)
         explode: true
         in: query
         name: expand
@@ -1391,7 +1471,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: The list of related queries that need to be included in the result.
+      - description: The list of related queries that need to be included in the result. ( Available => datastreams, locations, histLocations)
         explode: true
         in: query
         name: expand
@@ -1478,29 +1558,29 @@ paths:
       tags:
       - Things
       x-eov-operation-handler: controllers/ThingsController
-  /Things/{entityId}/MultiDatastreams:
-    get:
-      operationId: thingsEntityIdMultiDatastreamsGET
-      parameters:
-      - description: The id of the requested entity
-        explode: false
-        in: path
-        name: entityId
-        required: true
-        schema:
-          format: int64
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MultiDatastreams'
-          description: reponse 200
-      tags:
-      - Things
-      x-eov-operation-handler: controllers/ThingsController
+  # /Things/{entityId}/MultiDatastreams:
+  #   get:
+  #     operationId: thingsEntityIdMultiDatastreamsGET
+  #     parameters:
+  #     - description: The id of the requested entity
+  #       explode: false
+  #       in: path
+  #       name: entityId
+  #       required: true
+  #       schema:
+  #         format: int64
+  #         type: integer
+  #       style: simple
+  #     responses:
+  #       "200":
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/MultiDatastreams'
+  #         description: reponse 200
+  #     tags:
+  #     - Things
+  #     x-eov-operation-handler: controllers/ThingsController
 components:
   parameters:
     entityId:
@@ -1615,18 +1695,18 @@ components:
           schema:
             $ref: '#/components/schemas/Locations'
       description: reponse 200
-    MultiDatastream-get-200:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/MultiDatastream'
-      description: reponse 200
-    MultiDatastreams-get-200:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/MultiDatastreams'
-      description: reponse 200
+    # MultiDatastream-get-200:
+    #   content:
+    #     application/json:
+    #       schema:
+    #         $ref: '#/components/schemas/MultiDatastream'
+    #   description: reponse 200
+    # MultiDatastreams-get-200:
+    #   content:
+    #     application/json:
+    #       schema:
+    #         $ref: '#/components/schemas/MultiDatastreams'
+    #   description: reponse 200
     Observation-get-200:
       content:
         application/json:

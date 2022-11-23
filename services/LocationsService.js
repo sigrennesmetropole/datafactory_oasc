@@ -29,9 +29,9 @@ const locationsEntityIdGET = ({ entityId, select, expand }) => new Promise(
 * */
 const locationsEntityIdHistoricalLocationsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Location, "Location", "", Op, "HistoricalLocation")
+    Service.findById(entityId, Location, "Location", "", Op, "histLocation")
     .then(data => {
-      resolve(data.payload.HistoricalLocation)
+      resolve(data.payload.histLocation)
     }).catch(err => {
       reject(err);
     });
@@ -47,9 +47,9 @@ const locationsEntityIdHistoricalLocationsGET = ({ entityId }) => new Promise(
 * */
 const locationsEntityIdThingsGET = ({ entityId }) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, Location, "Location", "", Op, "things")
+    Service.findById(entityId, Location, "Location", "", Op, "thing")
     .then(data => {
-      resolve(data.payload.things)
+      resolve(data.payload.thing)
     }).catch(err => {
       reject(err);
     });

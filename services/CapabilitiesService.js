@@ -44,11 +44,12 @@ const getLandingPage = () => new Promise(
           {
             "name": "Things",
             "url": hostname+"/Things"
-          },
+          }
+          /*,
           {
             "name": "MultiDatastreams",
             "url": hostname+"/MultiDatastreams"
-          }
+          }*/
         ],
         "serverSettings": {
           "conformance": [

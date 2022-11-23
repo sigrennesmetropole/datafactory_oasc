@@ -2,7 +2,7 @@
 const Service = require('./Service');
 const config = require("../config")
 const db = require("../models");
-const FeatureOfInterest = db.featuresOfInterest;
+const FeatureOfInterest = db.features;
 const Op = db.Sequelize.Op;
 /**
 *
@@ -29,9 +29,9 @@ const featuresOfInterestEntityIdGET = ({ entityId, select, expand }) => new Prom
 * */
 const featuresOfInterestEntityIdObservationsGET = ({ entityId}) => new Promise(
   async (resolve, reject) => {
-    Service.findById(entityId, FeatureOfInterest, "FeatureOfInterest", "", Op, "Observations")
+    Service.findById(entityId, FeatureOfInterest, "FeatureOfInterest", "", Op, "observations")
     .then(data => {
-      resolve(data.payload.Observations)
+      resolve(data.payload.observations)
     }).catch(err => {
       reject(err);
     });

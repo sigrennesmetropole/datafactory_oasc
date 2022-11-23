@@ -26,7 +26,7 @@ class Service {
     return returnObject;
   };
 
-  static getParameterGet(page = 0, size = 10, filter ="", select, expand ){
+  static getParameterGet(page = 0, size = 10, filter ="", select, expand){
     var condition = JSON.parse('{'+filter+'}');
     const { limit, offset } = Service.getPagination(page, size);
     var findJson = {  limit, offset }
@@ -39,8 +39,12 @@ class Service {
     }
     if(!!expand){
       var expandFields = expand.split(",");
+      expandFields = expandFields.map(element => {
+        return element.trim();
+      });
       findJson.include = expandFields;
     }
+
     return {findJson, limit}
   }
 
@@ -53,6 +57,7 @@ class Service {
       }
       const {findJson , limit} = Service.getParameterGet( 0, 1, "", select, expand)
       findJson.where = { "ID": { [op.eq]: entityId } };
+      findJson.hooks = true;
       service.findAll(findJson)
       .then(data => {
         if(data.length === 0){
