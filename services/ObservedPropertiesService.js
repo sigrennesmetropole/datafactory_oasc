@@ -64,7 +64,7 @@ const observedPropertiesEntityIdGET = ({ entityId, select, expand }) => new Prom
 * */
 const observedPropertiesGET = ({ page, size, filter, select, expand }) => new Promise(
   async (resolve, reject) => {
-    Service.findAll(page, size, filter, select, expand, ObservedProperty, "ObservedProperty", config, "ObservedProperty")
+    Service.findAll(page, size, filter, select, expand, ObservedProperty, "ObservedProperty", config, "ObservedProperties")
     .then(data => {
       resolve(data)
     }).catch(err => {

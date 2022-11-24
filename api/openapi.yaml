@@ -28,22 +28,20 @@ paths:
       parameters:
       - description: The number of the page to return
         explode: false
-        in: header
+        in: query
         name: page
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: The number of elements to return
         explode: false
-        in: header
+        in: query
         name: size
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: A filter query.
         explode: true
         in: query
@@ -215,22 +213,20 @@ paths:
       parameters:
       - description: The number of the page to return
         explode: false
-        in: header
+        in: query
         name: page
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: The number of elements to return
         explode: false
-        in: header
+        in: query
         name: size
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: A filter query.
         explode: true
         in: query
@@ -333,22 +329,20 @@ paths:
       parameters:
       - description: The number of the page to return
         explode: false
-        in: header
+        in: query
         name: page
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: The number of elements to return
         explode: false
-        in: header
+        in: query
         name: size
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: A filter query.
         explode: true
         in: query
@@ -474,22 +468,20 @@ paths:
       parameters:
       - description: The number of the page to return
         explode: false
-        in: header
+        in: query
         name: page
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: The number of elements to return
         explode: false
-        in: header
+        in: query
         name: size
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: A filter query.
         explode: true
         in: query
@@ -615,7 +607,7 @@ paths:
   #     parameters:
   #     - description: The number of the page to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: page
   #       required: false
   #       schema:
@@ -624,12 +616,12 @@ paths:
   #       style: simple
   #     - description: The number of elements to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: size
   #       required: false
   #       schema:
   #         format: int64
-  #         type: integer
+  #         type:form
   #       style: simple
   #     - description: A filter query.
   #       explode: true
@@ -703,7 +695,7 @@ paths:
   #       style: simple
   #     - description: The number of the page to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: page
   #       required: false
   #       schema:
@@ -712,12 +704,12 @@ paths:
   #       style: simple
   #     - description: The number of elements to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: size
   #       required: false
   #       schema:
   #         format: int64
-  #         type: integer
+  #         type:form
   #       style: simple
   #     - description: A filter query.
   #       explode: true
@@ -768,7 +760,7 @@ paths:
   #       style: simple
   #     - description: The number of the page to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: page
   #       required: false
   #       schema:
@@ -777,12 +769,12 @@ paths:
   #       style: simple
   #     - description: The number of elements to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: size
   #       required: false
   #       schema:
   #         format: int64
-  #         type: integer
+  #         type:form
   #       style: simple
   #     - description: A filter query.
   #       explode: true
@@ -833,7 +825,7 @@ paths:
   #       style: simple
   #     - description: The number of the page to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: page
   #       required: false
   #       schema:
@@ -842,12 +834,12 @@ paths:
   #       style: simple
   #     - description: The number of elements to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: size
   #       required: false
   #       schema:
   #         format: int64
-  #         type: integer
+  #         type:form
   #       style: simple
   #     - description: A filter query.
   #       explode: true
@@ -898,7 +890,7 @@ paths:
   #       style: simple
   #     - description: The number of the page to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: page
   #       required: false
   #       schema:
@@ -907,12 +899,12 @@ paths:
   #       style: simple
   #     - description: The number of elements to return
   #       explode: false
-  #       in: header
+  #       in: query
   #       name: size
   #       required: false
   #       schema:
   #         format: int64
-  #         type: integer
+  #         type:form
   #       style: simple
   #     - description: A filter query.
   #       explode: true
@@ -954,22 +946,20 @@ paths:
       parameters:
       - description: The number of the page to return
         explode: false
-        in: header
+        in: query
         name: page
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: The number of elements to return
         explode: false
-        in: header
+        in: query
         name: size
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: A filter query.
         explode: true
         in: query
@@ -1118,22 +1108,20 @@ paths:
       parameters:
       - description: The number of the page to return
         explode: false
-        in: header
+        in: query
         name: page
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: The number of elements to return
         explode: false
-        in: header
+        in: query
         name: size
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: A filter query.
         explode: true
         in: query
@@ -1259,22 +1247,20 @@ paths:
       parameters:
       - description: The number of the page to return
         explode: false
-        in: header
+        in: query
         name: page
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: The number of elements to return
         explode: false
-        in: header
+        in: query
         name: size
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: A filter query.
         explode: true
         in: query
@@ -1400,22 +1386,20 @@ paths:
       parameters:
       - description: The number of the page to return
         explode: false
-        in: header
+        in: query
         name: page
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: The number of elements to return
         explode: false
-        in: header
+        in: query
         name: size
         required: false
         schema:
-          format: int64
-          type: integer
-        style: simple
+          type: string
+        style: form
       - description: A filter query.
         explode: true
         in: query
@@ -1623,23 +1607,21 @@ components:
     page:
       description: The number of the page to return
       explode: false
-      in: header
+      in: query
       name: page
       required: false
       schema:
-        format: int64
-        type: integer
-      style: simple
+        type: string
+      style: form
     size:
       description: The number of elements to return
       explode: false
-      in: header
+      in: query
       name: size
       required: false
       schema:
-        format: int64
-        type: integer
-      style: simple
+        type: string
+      style: form
   responses:
     LandingPage:
       content:

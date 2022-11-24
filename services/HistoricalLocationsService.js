@@ -67,7 +67,7 @@ const historicalLocationsEntityIdThingGET = ({ entityId }) => new Promise(
 * */
 const historicalLocationsGET = ({ page, size, filter, select, expand }) => new Promise(
   async (resolve, reject) => {
-    Service.findAll(page, size, filter, select, expand, HistoricalLocation, "HistoricalLocation", config, "HistoricalLocation")
+    Service.findAll(page, size, filter, select, expand, HistoricalLocation, "HistoricalLocation", config, "HistoricalLocations")
     .then(data => {
       resolve(data)
     }).catch(err => {

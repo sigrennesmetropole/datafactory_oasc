@@ -18,7 +18,7 @@ class Service {
     const { count: totalItems, rows: values } = data;
     const currentPage = page ? +page : 0;
     const totalPages = Math.ceil(totalItems / limit);
-    var hostname = config.URL_PATH+':'+config.URL_PORT+"/";
+    var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1/";
     var returnObject = { "@iot.count" : totalItems, "value": values}
     if(currentPage + 1 < totalItems) {
       returnObject["@iot.nextLink"] = hostname+endpoint+`?page=${currentPage+1}&size=${limit}`
@@ -85,6 +85,17 @@ class Service {
       service.findAndCountAll(findJson)
       .then(data => {
         var response = Service.getPagingData(data, page, limit, config, endpoint);
+        if(!!response["@iot.nextLink"]){
+          if(!!filter){
+            response["@iot.nextLink"] += '&filter='+filter
+          }
+          if(!!select){
+            response["@iot.nextLink"] += '&select='+select
+          }
+          if(!!expand){
+            response["@iot.nextLink"] += '&expand='+expand
+          }
+        }
         resolve(Service.successResponse(response));
       })
       .catch(err => {

@@ -46,7 +46,7 @@ const featuresOfInterestEntityIdObservationsGET = ({ entityId}) => new Promise(
 * */
 const featuresOfInterestGET = ({ page, size, filter, select, expand }) => new Promise(
   async (resolve, reject) => {
-    Service.findAll(page, size, filter, select, expand, FeatureOfInterest, "FeatureOfInterest", config, "FeatureOfInterest")
+    Service.findAll(page, size, filter, select, expand, FeatureOfInterest, "FeatureOfInterest", config, "FeaturesOfInterest")
     .then(data => {
       resolve(data)
     }).catch(err => {
