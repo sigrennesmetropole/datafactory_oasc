@@ -128,7 +128,7 @@ class Hooks{
                 if(!!id){
                     instance.dataValues["@iot.selfLink"] = hostname+'/Locations/'+id;
                     instance.dataValues["HistoricalLocations@iot.navigationLink"] = hostname+'/Locations/'+id+'/HistoricalLocations';
-                    instance.dataValues["Thing@iot.navigationLink"] = hostname+'/Locations/'+id+'/Thing';
+                    instance.dataValues["Thing@iot.navigationLink"] = hostname+'/Locations/'+id+'/Things';
                     instance.dataValues["@iot.id"] = id;
                 }
                 delete instance.dataValues.id;
