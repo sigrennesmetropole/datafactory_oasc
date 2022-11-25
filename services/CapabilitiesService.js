@@ -10,7 +10,7 @@ const config = require('../config');
 const getLandingPage = () => new Promise(
   async (resolve, reject) => {
     try {
-      var hostname = config.URL_PATH+':'+config.URL_PORT+'/v1.1'
+      var hostname = config.URL_PATH+'/v1.1'
       resolve(Service.successResponse({
         "value": [
           {

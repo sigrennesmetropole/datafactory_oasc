@@ -18,7 +18,7 @@ class Service {
     const { count: totalItems, rows: values } = data;
     const currentPage = page ? +page : 0;
     const totalPages = Math.ceil(totalItems / limit);
-    var hostname = config.URL_PATH+':'+config.URL_PORT + "/v1.1/";
+    var hostname = config.URL_PATH+ "/v1.1/";
     var returnObject = { "@iot.count" : totalItems, "value": values}
     if(currentPage + 1 < totalItems) {
       returnObject["@iot.nextLink"] = hostname+endpoint+`?page=${currentPage+1}&size=${limit}`
