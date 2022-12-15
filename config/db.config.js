@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config({ path: __dirname+'/../.env' });
+
 module.exports = {
     HOST: process.env.DB_HOST,
     USER: process.env.DB_USERNAME,
