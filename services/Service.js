@@ -1,3 +1,7 @@
+const { Expression } = require('sequelize-expression');
+//https://www.npmjs.com/package/sequelize-expression for syntax
+const { Op } = require('sequelize');
+
 class Service {
   static rejectResponse(error, code = 500) {
     return { error, code };
@@ -26,12 +30,19 @@ class Service {
     return returnObject;
   };
 
-  static getParameterGet(page = 0, size = 10, filter ="", select, expand){
-    var condition = JSON.parse('{'+filter+'}');
+  static async getParameterGet(page = 0, size = 10, filter ="", select, expand, reject){
     const { limit, offset } = Service.getPagination(page, size);
     var findJson = {  limit, offset }
     if(filter != ""){
-      findJson.where = condition
+      const parser = new Expression({ op : Op });
+      const result = await parser.parse(filter);
+      if (!result.ok) {
+        reject(Service.rejectResponse({
+          "message": result.getErrors()
+        }, 400));
+      }
+      const filters = result.getResult();
+      findJson.where = filters
     }
     if(!!select){
       var selectArray = select.split(",");
@@ -49,13 +60,13 @@ class Service {
   }
 
   static findById(entityId, service, name, select, op, expand){
-    return new Promise((resolve,reject) => { 
+    return new Promise(async (resolve,reject) => { 
       if(entityId == undefined){
         reject(Service.rejectResponse({
           message: "id is mandatory"
         }), 400);
       }
-      const {findJson , limit} = Service.getParameterGet( 0, 1, "", select, expand)
+      const {findJson , limit} = await Service.getParameterGet( 0, 1, "", select, expand, reject)
       findJson.where = { "ID": { [op.eq]: entityId } };
       findJson.hooks = true;
       service.findAll(findJson)
@@ -80,8 +91,8 @@ class Service {
   }
 
   static findAll(page, size, filter, select, expand, service, name, config, endpoint){
-    return new Promise((resolve,reject) => { 
-      const {findJson , limit} = Service.getParameterGet( page, size, filter, select, expand)
+    return new Promise(async (resolve,reject) =>  {
+      const {findJson , limit} =  await Service.getParameterGet( page, size, filter, select, expand, reject)
       service.findAndCountAll(findJson)
       .then(data => {
         var response = Service.getPagingData(data, page, limit, config, endpoint);
