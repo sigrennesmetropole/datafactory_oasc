@@ -1633,7 +1633,7 @@ components:
       name: filter
       required: false
       schema:
-        type: string
+        type: object
       style: form
     select:
       description: The list of properties that need to be returned.
