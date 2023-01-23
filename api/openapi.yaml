@@ -44,13 +44,18 @@ paths:
           type: string
         style: form
       - description: A filter query.
-        explode: true
         in: query
         name: filter
         required: false
-        schema:
-          type: string
-        style: form
+        content:
+          application/json: # <---- media type indicates how to serialize / deserialize the parameter content
+            schema: 
+              type: object
+              example: |
+                {
+                "Datastreams":"'ID' IN [id_ datastream_1,id_ datastream_2,….]",
+                "observations": "'resultTime' < 'YYYY-MM-DDThh:mm:ss'" # example de filtrage
+                }
       - description: The list of properties that need to be returned.
         explode: true
         in: query
@@ -213,7 +218,6 @@ paths:
       operationId: featuresOfInterestGET
       parameters:
       - description: The number of the page to return
-        explode: false
         in: query
         name: page
         required: false
@@ -229,13 +233,18 @@ paths:
           type: string
         style: form
       - description: A filter query.
-        explode: true
         in: query
         name: filter
         required: false
-        schema:
-          type: string
-        style: form
+        content:
+          application/json: # <---- media type indicates how to serialize / deserialize the parameter content
+            schema: 
+              type: object
+              example: |
+                {
+                "FeaturesOfInterest":"'ID' IN [id_FeaturesOfInterest_1,id_FeaturesOfInterest_2,….]",
+                "<expand value of the list>": "'<expand's field>' <op ('<','>','eq',...)> '<value that will compare>'" # example de filtrage
+                }
       - description: The list of properties that need to be returned.
         explode: true
         in: query
@@ -345,13 +354,18 @@ paths:
           type: string
         style: form
       - description: A filter query.
-        explode: true
         in: query
         name: filter
         required: false
-        schema:
-          type: string
-        style: form
+        content:
+          application/json: # <---- media type indicates how to serialize / deserialize the parameter content
+            schema: 
+              type: object
+              example: |
+                {
+                "HistoricalLocations":"'ID' IN [id_HistoricalLocations_1,id_HistoricalLocations_2,….]",
+                "<expand value of the list>": "'<expand's field>' <op ('<','>','eq',...)> '<value that will compare>'" # example de filtrage
+                }
       - description: The list of properties that need to be returned.
         explode: true
         in: query
@@ -484,13 +498,18 @@ paths:
           type: string
         style: form
       - description: A filter query.
-        explode: true
         in: query
         name: filter
         required: false
-        schema:
-          type: string
-        style: form
+        content:
+          application/json: # <---- media type indicates how to serialize / deserialize the parameter content
+            schema: 
+              type: object
+              example: |
+                {
+                "Locations":"'ID' IN [id_Locations_1,id_Locations_2,….]",
+                "<expand value of the list>": "'<expand's field>' <op ('<','>','eq',...)> '<value that will compare>'" # example de filtrage
+                }
       - description: The list of properties that need to be returned.
         explode: true
         in: query
@@ -962,13 +981,18 @@ paths:
           type: string
         style: form
       - description: A filter query.
-        explode: true
         in: query
         name: filter
         required: false
-        schema:
-          type: string
-        style: form
+        content:
+          application/json: # <---- media type indicates how to serialize / deserialize the parameter content
+            schema: 
+              type: object
+              example: |
+                {
+                "Observations":"'ID' IN [id_Observations_1,id_Observations_2,….]",
+                "<expand value of the list>": "'<expand's field>' <op ('<','>','eq',...)> '<value that will compare>'" # example de filtrage
+                }
       - description: The list of properties that need to be returned.
         explode: true
         in: query
@@ -1124,13 +1148,18 @@ paths:
           type: string
         style: form
       - description: A filter query.
-        explode: true
         in: query
         name: filter
         required: false
-        schema:
-          type: string
-        style: form
+        content:
+          application/json: # <---- media type indicates how to serialize / deserialize the parameter content
+            schema: 
+              type: object
+              example: |
+                {
+                "ObservedProperties":"'ID' IN [id_ObservedProperties_1,id_ObservedProperties_2,….]",
+                "<expand value of the list>": "'<expand's field>' <op ('<','>','eq',...)> '<value that will compare>'" # example de filtrage
+                }
       - description: The list of properties that need to be returned.
         explode: true
         in: query
@@ -1263,13 +1292,18 @@ paths:
           type: string
         style: form
       - description: A filter query.
-        explode: true
         in: query
         name: filter
         required: false
-        schema:
-          type: string
-        style: form
+        content:
+          application/json: # <---- media type indicates how to serialize / deserialize the parameter content
+            schema: 
+              type: object
+              example: |
+                {
+                "Sensors":"'ID' IN [id_Sensors_1,id_Sensors_2,….]",
+                "<expand value of the list>": "'<expand's field>' <op ('<','>','eq',...)> '<value that will compare>'" # example de filtrage
+                }
       - description: The list of properties that need to be returned.
         explode: true
         in: query
@@ -1402,13 +1436,18 @@ paths:
           type: string
         style: form
       - description: A filter query.
-        explode: true
         in: query
         name: filter
         required: false
-        schema:
-          type: string
-        style: form
+        content:
+          application/json: # <---- media type indicates how to serialize / deserialize the parameter content
+            schema: 
+              type: object
+              example: |
+                {
+                "Things":"'ID' IN [id_Things_1,id_Things_2,….]",
+                "<expand value of the list>": "'<expand's field>' <op ('<','>','eq',...)> '<value that will compare>'" # example de filtrage
+                }
       - description: The list of properties that need to be returned.
         explode: true
         in: query
