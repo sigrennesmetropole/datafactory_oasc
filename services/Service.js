@@ -33,17 +33,9 @@ class Service {
   static async getParameterGet(page = 0, size = 10, filter ="", select, expand, reject, name){
     const { limit, offset } = Service.getPagination(page, size);
     var findJson = {  limit, offset }
-    var globalFilters;
-    try{
-      globalFilters = JSON.parse(filter);
-    } catch (error){ 
-      reject(Service.rejectResponse({
-        "message": error.message
-      }, 400));
-    }
-    if(globalFilters[name] != ""){
+    if(filter[name] != ""){
       const parser = new Expression({ op : Op });
-      const result = await parser.parse(globalFilters[name].replace(/'/g, "\""));
+      const result = await parser.parse(filter[name].replace(/'/g, "\""));
       if (!result.ok) {
         reject(Service.rejectResponse({
           "message": result.getErrors()
@@ -63,9 +55,9 @@ class Service {
           model: db[element.trim()],
           as: element
         }; 
-        if(!!globalFilters[element]){
+        if(!!filter[element]){
           const parser = new Expression({ op : Op });
-          const result = await parser.parse(globalFilters[element].replace(/'/g, "\""));
+          const result = await parser.parse(filter[element].replace(/'/g, "\""));
           if (!result.ok) {
             reject(Service.rejectResponse({
               "message": result.getErrors()
