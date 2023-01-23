@@ -35,13 +35,17 @@ class Service {
     var findJson = {  limit, offset }
     var globalFilters;
     try{
+      if(filter != ""){
       globalFilters = JSON.parse(filter);
+      }else {
+        globalFilters=""
+      }
     } catch (error){ 
       reject(Service.rejectResponse({
         "message": error.message
       }, 400));
     }
-    if(globalFilters[name] != ""){
+    if (globalFilters[name] != "" && globalFilters[name] != undefined){
       const parser = new Expression({ op : Op });
       const result = await parser.parse(globalFilters[name].replace(/'/g, "\""));
       if (!result.ok) {
