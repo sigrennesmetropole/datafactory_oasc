@@ -107,7 +107,7 @@ const datastreamsGET = ({ page = 0, size = 10, filter, select, expand }) => new 
     }).catch(err => {
       reject(err);
     });
-  },
+  }
 );
 
 module.exports = {

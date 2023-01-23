@@ -63,19 +63,39 @@ function initModels(sequelize) {
   thingsLocations.belongsTo(things, { as: "thing", foreignKey: "thingId"});
   things.hasMany(thingsLocations, { as: "thingsLocations", foreignKey: "thingId"});
 
+  var datastream = datastreams;
+  var thing = things;
+  var feature = features;
+  var histLocation = histLocations;
+  var location = locations;
+  var locationsHistLocation = locationsHistLocations;
+  var observation = observations;
+  var obsPropertie = obsProperties;
+  var sensor = sensors;
+  var thingsLocation = thingsLocations;
   return {
     datastreams,
+    datastream,
     features,
+    feature,
     histLocations,
+    histLocation,
     locations,
+    location,
     locationsHistLocations,
+    locationsHistLocation,
      // multiDatastreams,
     //  multiDatastreamsObsProperties,
     observations,
+    observation,
     obsProperties,
+    obsPropertie,
     sensors,
+    sensor,
     things,
+    thing,
     thingsLocations,
+    thingsLocation
   };
 }
 module.exports = initModels;
