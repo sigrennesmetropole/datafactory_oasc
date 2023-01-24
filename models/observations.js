@@ -36,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
         return val;
       },
       allowNull: false
-    }, 
+    },
     resultTime: {
       type: DataTypes.DATE,
       allowNull: true,
@@ -120,6 +120,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: true,
       field: 'RESULT_BOOLEAN'
+    },
+    result: {
+      type: DataTypes.VIRTUAL,
+      allowNull: false,
+      get(){
+        var result =  [this.dataValues.resultBoolean, this.dataValues.resultJson, this.dataValues.resultString, this.dataValues.resultNumber]
+        delete this.dataValues.resultBoolean
+        delete this.dataValues.resultJson
+        delete this.dataValues.resultString
+        delete this.dataValues.resultNumber
+        return result.join('')
+      }
     },
     // multiDatastreamId: {
     //   type: DataTypes.BIGINT,
