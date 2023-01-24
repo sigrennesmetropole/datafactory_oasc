@@ -33,7 +33,10 @@ class Service {
   static async getParameterGet(page = 0, size = 10, filter ="", select, expand, reject, name){
     const { limit, offset } = Service.getPagination(page, size);
     var findJson = {  limit, offset }
-    if(filter[name] != ""){
+    console.log(filter)
+    console.log(name)
+    console.log(filter[name])
+    if (filter[name] != "" && filter != "" && Object.keys(filter).length !== 0 ){
       const parser = new Expression({ op : Op });
       const result = await parser.parse(filter[name].replace(/'/g, "\""));
       if (!result.ok) {
