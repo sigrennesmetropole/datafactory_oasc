@@ -24,7 +24,7 @@ class Service {
     const totalPages = Math.ceil(totalItems / limit);
     var hostname = config.URL_PATH+ "/v1.1/";
     var returnObject = { "@iot.count" : totalItems, "value": values}
-    if(currentPage + 1 < totalItems) {
+    if ((currentPage + 1) * limit < totalItems) {
       returnObject["@iot.nextLink"] = hostname+endpoint+`?page=${currentPage+1}&size=${limit}`
     }
     return returnObject;
@@ -32,11 +32,22 @@ class Service {
 
   static async getParameterGet(page = 0, size = 10, filter ="", select, expand, reject, name){
     const { limit, offset } = Service.getPagination(page, size);
-    var findJson = {  limit, offset }
+    var findJson = { limit, offset}
+    console.log("filter")
     console.log(filter)
     console.log(name)
     console.log(filter[name])
-    if (filter[name] != "" && filter != "" && Object.keys(filter).length !== 0 ){
+
+    if (filter[name] !== "" && filter != "" && filter[name] !== undefined && Object.keys(filter).length !== 0 ){
+      if ((filter[name] === "" || filter[name] == undefined) && (filter[expand] === "" || filter[expand] == undefined)) {
+        var error = "JSON de filtrage mal formé : "
+        if (Object.keys(filter).toString() != name) {
+          error = error + "Nous avons le champs principale '" + Object.keys(filter).toString() + "' au lieu de '" + name + "'"
+        }
+        return reject(Service.rejectResponse({
+          "message": error
+        }, 400));
+      }
       const parser = new Expression({ op : Op });
       const result = await parser.parse(filter[name].replace(/'/g, "\""));
       if (!result.ok) {
@@ -72,7 +83,6 @@ class Service {
       }));
       findJson.include = expandFields;
     }
-    console.log(findJson)
 
     return {findJson, limit}
   }
@@ -111,12 +121,14 @@ class Service {
   static findAll(page, size, filter, select, expand, service, name, config, endpoint){
     return new Promise(async (resolve,reject) =>  {
       const {findJson , limit} =  await Service.getParameterGet( page, size, filter, select, expand, reject, name)
+      console.log("findJson findAll")
+      console.log(findJson)
       service.findAndCountAll(findJson)
       .then(data => {
         var response = Service.getPagingData(data, page, limit, config, endpoint);
         if(!!response["@iot.nextLink"]){
           if(!!filter){
-            response["@iot.nextLink"] += '&filter='+filter
+            response["@iot.nextLink"] += '&filter=' + encodeURIComponent(JSON.stringify(filter))
           }
           if(!!select){
             response["@iot.nextLink"] += '&select='+select
